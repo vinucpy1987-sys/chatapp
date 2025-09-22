@@ -6,8 +6,7 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
 
-// Serve files from "public" folder
-app.use(express.static("public"));
+app.use(express.static("public")); // serve frontend
 
 io.on("connection", (socket) => {
   console.log("User connected");
@@ -26,7 +25,6 @@ io.on("connection", (socket) => {
   });
 });
 
-const PORT = process.env.PORT || 3000;
-server.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+server.listen(3000, () => {
+  console.log("Server running at http://localhost:3000");
 });
